@@ -34,10 +34,17 @@
   "secrets": [
     {
       "name": "HOMEBREW_TAP_TOKEN",
+      "required": true,
       "from": "A GitHub Actions secret on this repo: a token that can push to trust-ethos/homebrew-tap, used only by the release workflow",
       "service": "homebrew-tap"
     }
   ],
+  "spend": {
+    "fixed": []
+  },
+  "jobs": [],
+  "privy": [],
+  "funnel": [],
   "health": false,
   "notes": "A CLI people install, not a deployed service, so Fleet has nothing to health-check. Released by .github/workflows/release.yml on a push to main when package.json's version has no tag yet: a draft GitHub release, npm publish, tarballs for macOS, Linux and Windows, and the Homebrew formula. Install with the curl script in the README, `npm install -g @trust-ethos/cli` or `brew install trust-ethos/tap/ethos`. ETHOS_ENV, ETHOS_API_URL, ETHOS_DEBUG and ETHOS_OUTPUT (.env.sample) are optional settings, not secrets. ETHOS_API_KEY is each user's own key, overriding the one `ethos login` stored; the repo holds none.",
   "tags": [
